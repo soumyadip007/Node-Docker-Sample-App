@@ -6,17 +6,17 @@ app.use(bodyParser.json())
 
 var data = [];
 
-app.post('/websocket', async function (req, res) {
+app.post('/webhook', async function (req, res) {
     console.log(req.body);
     data.push(req.body);
     res.send({ ack: "true", currentTime: getTime() });
 });
 
-app.get('/check', async function (req, res) {
+app.get('/webhook/check', async function (req, res) {
     res.send(data);
 });
 
-app.post('/websocket2', async function (req, res) {
+app.post('/webhook2', async function (req, res) {
     console.log(req.body);
     res.send({ ack: "true", currentTime: getTime() });
 });
