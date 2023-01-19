@@ -4,9 +4,16 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
+var data = [];
+
 app.post('/websocket', async function (req, res) {
     console.log(req.body);
+    data.push(req.body);
     res.send({ ack: "true", currentTime: getTime() });
+});
+
+app.get('/check', async function (req, res) {
+    res.send(data);
 });
 
 app.post('/websocket2', async function (req, res) {
