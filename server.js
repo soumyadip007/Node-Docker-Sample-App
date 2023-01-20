@@ -16,6 +16,11 @@ app.get('/webhook/check', async function (req, res) {
     res.send(data);
 });
 
+app.get('/webhook/clear', async function (req, res) {
+    data = [];
+    res.send(data);
+});
+
 app.post('/webhook2', async function (req, res) {
     console.log(req.body);
     res.send({ ack: "true", currentTime: new Date(date).getTime().toString() });
